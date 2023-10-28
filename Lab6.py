@@ -18,6 +18,16 @@ def encode_password(password):
             encoded += char
     return encoded
 
+def decode_password(option, password):
+    if option == '2':
+        encodedPassword = ''
+
+        for i in range(len(password)):
+            encodedPassword += (str((int(password[i]) + 3) % 10))
+
+        print(f"The encoded password is {encodedPassword}, and the original password is {password}.\n")
+
+    return
 
 def menu_display():  # Function for the menu
     print("Menu")
@@ -37,10 +47,7 @@ while True:
         print("Your password has been encoded and stored!\n")
 
     elif user_input == "2":
-        if encoded_password is not None and og_password is not None:
-            print(f"The encoded password is {encoded_password}, and the original password is {og_password}.\n")
-        else:
-            print("No password has been encoded yet.")
+        decode_password(user_input, og_password)
 
     elif user_input == "3":
         break
