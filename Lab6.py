@@ -16,18 +16,17 @@ def encode_password(password):
             encoded += str(encoded_digit)
         else:
             encoded += char
+
     return encoded
 
 def decode_password(option, password):
     if option == '2':
-        encodedPassword = ''
+        decodedPassword = ''
 
         for i in range(len(password)):
-            encodedPassword += (str((int(password[i]) + 3) % 10))
+            decodedPassword += (str((int(password[i]) - 3) % 10))
 
-        print(f"The encoded password is {encodedPassword}, and the original password is {password}.\n")
-
-    return
+    return decodedPassword
 
 def menu_display():  # Function for the menu
     print("Menu")
@@ -47,7 +46,8 @@ while True:
         print("Your password has been encoded and stored!\n")
 
     elif user_input == "2":
-        decode_password(user_input, og_password)
+        password = decode_password(user_input, encoded_password)
+        print(f"The encoded password is {encoded_password}, and the original password is {password}.\n")
 
     elif user_input == "3":
         break
